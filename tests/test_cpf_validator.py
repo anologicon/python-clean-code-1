@@ -1,6 +1,6 @@
 import pytest
 from src.cpf_value import Cpf
-
+from src.exceptions.cpf_exception import CpfException
 import src
 
 class TestCpfValidator:
@@ -11,6 +11,6 @@ class TestCpfValidator:
         assert cpf_test == cpf_object.cpf 
 
     def test_should_be_false(self):
-        with pytest.raises(Exception, match='Cpf Invalido') as exception:
+        with pytest.raises(CpfException, match='Cpf Invalido') as exception:
             cpf_test = "101.201.0000000000"
             Cpf(cpf_test)

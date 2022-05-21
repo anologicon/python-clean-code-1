@@ -1,3 +1,5 @@
+from .exceptions.cpf_exception import CpfException
+
 class Cpf:
 
     def __init__(self, cpf):
@@ -13,6 +15,6 @@ class Cpf:
         return True
     
     def throw_error(self):
-        raise Exception("Cpf Invalido")
+        raise CpfException
 
         
