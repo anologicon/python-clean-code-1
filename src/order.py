@@ -23,6 +23,8 @@ class Order:
     def __apply_coupon(self, total):
         if not self.coupon:
             return total
+        if not self.coupon.is_valid():
+            return total
         return total - ((total * self.coupon.percentage) / 100)
 
     def add_item(self, item: Item):
