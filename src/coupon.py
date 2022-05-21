@@ -6,9 +6,7 @@ class Coupon:
         self.percentage = percentage
         self.date_expiration = date_expiration
     
-    def is_valid(self) -> bool:
-        if self.date_expiration is not None:
-            today = datetime.date.today()
-            if today > self.date_expiration:
-                return False
-        return True
+    def is_valid(self, today: datetime.date = datetime.date.today()) -> bool:
+        if self.date_expiration is None:
+            return True
+        return self.date_expiration >= today

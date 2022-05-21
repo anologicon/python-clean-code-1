@@ -1,3 +1,5 @@
+from .product import Product
+
 class OrderItem:
 
     def __init__(self, id: str, price: float, quantity: int):

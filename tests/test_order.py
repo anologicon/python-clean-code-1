@@ -31,9 +31,7 @@ class TestOrder:
         assert order.get_total_value() == 1600
     
     def test_should_not_apply_expired_coupon_to_order(self, mocker):
-        mock_today = mocker.patch('src.coupon.datetime')
-        mock_today.date.today.return_value = datetime.date(2021, 12, 10)
-        order = Order(Cpf("487.501.680-88"))
+        order = Order(Cpf("487.501.680-88"), datetime.date(2020, 2, 1))
         order.add_item(Item('Celular', 1900, 1))
         order.add_coupon(Coupon('20 OFF', 20, datetime.date(2020, 1, 31)))
         assert order.get_total_value() == 1900
