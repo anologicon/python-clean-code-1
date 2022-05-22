@@ -1,8 +1,6 @@
-from .product import Product
-
 class OrderItem:
 
-    def __init__(self, id: str, price: float, quantity: int):
+    def __init__(self, id: int, price: float, quantity: int):
         self.id = id
         self.price = price
         self.quantity = quantity

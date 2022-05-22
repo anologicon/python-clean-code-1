@@ -2,16 +2,20 @@ from .cpf_value import Cpf
 from .item import Item
 from .order_item import OrderItem
 from .coupon import Coupon
+from .freight_calculator import FreightCalculator
+from .default_freight_calculator import DefaultFreightCalculator
 from functools import reduce
 import datetime
 
 class Order:
 
-    def __init__(self, cpf: Cpf, date: datetime.date = datetime.date.today()):
+    def __init__(self, cpf: Cpf, date: datetime.date = datetime.date.today(), freight_calculator: FreightCalculator = DefaultFreightCalculator()):
         self.cpf = cpf
         self.order_items = []
         self.coupon = None
         self.date = date
+        self.freight_calculator = freight_calculator
+        self._freight = 0
 
     def get_total_value(self):
         total = 0
@@ -19,6 +23,9 @@ class Order:
             total += order_item.get_total_value()
         total = self.__apply_coupon(total) 
         return total
+    
+    def get_freight(self) -> float:
+        return self._freight
     
     def add_coupon(self, coupon: Coupon):
         if coupon.is_valid(self.date):
@@ -29,5 +36,6 @@ class Order:
             return total
         return total - ((total * self.coupon.percentage) / 100)
 
-    def add_item(self, item: Item):
-        self.order_items.append(OrderItem(item.description, item.price, item.quantity))
+    def add_item(self, item: Item, quantity: int):
+        self._freight += self.freight_calculator.calculate(item) * quantity
+        self.order_items.append(OrderItem(item.description, item.price, quantity))
