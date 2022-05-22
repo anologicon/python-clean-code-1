@@ -2,14 +2,14 @@ from .cpf_value import Cpf
 from .item import Item
 from .order_item import OrderItem
 from .coupon import Coupon
-from .freight_calculator import FreightCalculator
+from .freight_calculator_interface import FreightCalculatorInterface
 from .default_freight_calculator import DefaultFreightCalculator
 from functools import reduce
 import datetime
 
 class Order:
 
-    def __init__(self, cpf: Cpf, date: datetime.date = datetime.date.today(), freight_calculator: FreightCalculator = DefaultFreightCalculator()):
+    def __init__(self, cpf: Cpf, date: datetime.date = datetime.date.today(), freight_calculator: FreightCalculatorInterface = DefaultFreightCalculator()):
         self.cpf = cpf
         self.order_items = []
         self.coupon = None
