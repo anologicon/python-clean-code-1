@@ -1,4 +1,4 @@
-from src.coupon import Coupon
+from src.domain.entity.coupon import Coupon
 import datetime
 import pytest
 

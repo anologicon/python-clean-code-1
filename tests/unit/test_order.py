@@ -1,9 +1,9 @@
-from src.order import Order
-from src.cpf_value import Cpf
-from src.item import Item
-from src.coupon import Coupon
-from src.default_freight_calculator import DefaultFreightCalculator
-from src.fixed_freight_calculator import FixedFreightCalculator
+from src.domain.entity.order import Order
+from src.domain.entity.cpf_value import Cpf
+from src.domain.entity.item import Item
+from src.domain.entity.coupon import Coupon
+from src.domain.entity.default_freight_calculator import DefaultFreightCalculator
+from src.domain.entity.fixed_freight_calculator import FixedFreightCalculator
 import datetime
 import pytest
 

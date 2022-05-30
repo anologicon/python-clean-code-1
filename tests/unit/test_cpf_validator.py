@@ -1,7 +1,6 @@
 import pytest
-from src.cpf_value import Cpf
+from src.domain.entity.cpf_value import Cpf
 from src.exceptions.cpf_exception import CpfException
-import src
 
 class TestCpfValidator:
 

@@ -1,4 +1,4 @@
-from .exceptions.cpf_exception import CpfException
+from ...exceptions.cpf_exception import CpfException
 
 class Cpf:
 
