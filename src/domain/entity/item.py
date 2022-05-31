@@ -1,6 +1,14 @@
 class Item:
-
-    def __init__(self, id: int, description: str, price: int, height: int = 0, width: int = 0, length: int = 0, weight: int = 0):
+    def __init__(
+        self,
+        id: int,
+        description: str,
+        price: int,
+        height: int = 0,
+        width: int = 0,
+        length: int = 0,
+        weight: int = 0,
+    ):
         self.id = id
         self.description = description
         self.price = price
@@ -8,9 +16,9 @@ class Item:
         self.width = width
         self.length = length
         self.weight = weight
-    
+
     def calculate_volume(self) -> int:
-        return round((self.height/100) * (self.width/100) * (self.length/100), 6)
+        return round((self.height / 100) * (self.width / 100) * (self.length / 100), 6)
 
     def calculate_density(self) -> float:
         volume = self.calculate_volume()

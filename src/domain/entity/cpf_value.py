@@ -1,10 +1,10 @@
 from ...exceptions.cpf_exception import CpfException
 
-class Cpf:
 
+class Cpf:
     def __init__(self, cpf):
         self.cpf = cpf
-        if not self.validate() :
+        if not self.validate():
             self.throw_error()
 
     def validate(self) -> bool:
@@ -13,8 +13,6 @@ class Cpf:
         if (len(self.cpf) < 11) or (len(self.cpf) > 14):
             return False
         return True
-    
+
     def throw_error(self):
         raise CpfException
-
-        

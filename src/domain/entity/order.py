@@ -7,9 +7,14 @@ from .default_freight_calculator import DefaultFreightCalculator
 from functools import reduce
 import datetime
 
-class Order:
 
-    def __init__(self, cpf: Cpf, date: datetime.date = datetime.date.today(), freight_calculator: FreightCalculatorInterface = DefaultFreightCalculator()):
+class Order:
+    def __init__(
+        self,
+        cpf: Cpf,
+        date: datetime.date = datetime.date.today(),
+        freight_calculator: FreightCalculatorInterface = DefaultFreightCalculator(),
+    ):
         self.cpf = cpf
         self.order_items = []
         self.coupon = None
@@ -21,12 +26,12 @@ class Order:
         total = 0
         for order_item in self.order_items:
             total += order_item.get_total_value()
-        total = self.__apply_coupon(total) 
+        total = self.__apply_coupon(total)
         return total
-    
+
     def get_freight(self) -> float:
         return self._freight
-    
+
     def add_coupon(self, coupon: Coupon):
         if coupon.is_valid(self.date):
             self.coupon = coupon

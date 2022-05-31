@@ -1,5 +1,4 @@
 class OrderItem:
-
     def __init__(self, id: int, price: float, quantity: int):
         self.id = id
         self.price = price

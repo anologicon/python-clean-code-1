@@ -6,6 +6,7 @@ from ...domain.repository.item_repository_interface import ItemRepositoryInterfa
 from ...domain.repository.coupon_repository_interface import CouponRepositoryInterface
 from ...domain.repository.order_repository_interface import OrderRepositoryInterface
 
+
 @dataclass
 class PlaceOrder:
 
@@ -16,10 +17,10 @@ class PlaceOrder:
     def execute(self, input: PlaceOrderInput) -> PlaceOrderOutput:
         order = Order(input.cpf, input.date)
         for item in input.order_items:
-            item_entity = self.item_repository.find_by_id(item['idItem'])
+            item_entity = self.item_repository.find_by_id(item["idItem"])
             if not item_entity:
-                raise Exception('Item not found')
-            order.add_item(item_entity, item['quantity'])
+                raise Exception("Item not found")
+            order.add_item(item_entity, item["quantity"])
         if input.coupon:
             coupon_entity = self.coupon_repository.find_by_code(input.coupon)
             if coupon_entity:

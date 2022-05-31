@@ -1,8 +1,8 @@
 from ....domain.repository.order_repository_interface import OrderRepositoryInterface
 from ....domain.entity.order import Order
 
-class OrderRepositoryMemory(OrderRepositoryInterface):
 
+class OrderRepositoryMemory(OrderRepositoryInterface):
     def __init__(self):
         self.orders = []
 
